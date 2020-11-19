@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="1750" started-at="2020-11-19T20:41:58Z" finished-at="2020-11-19T20:42:00Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="1750" started-at="2020-11-19T20:41:58Z" finished-at="2020-11-19T20:42:00Z">
+      <class name="com.sdetsg.tests.SampleTest">
+        <test-method status="PASS" signature="test()[pri:0, instance:com.sdetsg.tests.SampleTest@512baff6]" name="test" duration-ms="985" started-at="2020-11-19T20:41:58Z" finished-at="2020-11-19T20:41:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test -->
+        <test-method status="PASS" signature="endReport()[pri:0, instance:com.sdetsg.tests.SampleTest@512baff6]" name="endReport" is-config="true" duration-ms="746" started-at="2020-11-19T20:41:59Z" finished-at="2020-11-19T20:42:00Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endReport -->
+      </class> <!-- com.sdetsg.tests.SampleTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
