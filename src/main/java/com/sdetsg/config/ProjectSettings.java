@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
  *
  */
 public class ProjectSettings {
-
+	
 	protected static WebDriver driver = new ChromeDriver();
+	
 }
