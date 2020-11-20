@@ -2,6 +2,7 @@ package com.sdetsg.utility;
 import java.util.ArrayList;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -31,5 +32,28 @@ public class Utils extends ProjectSettings {
 		return (new WebDriverWait(driver, java.time.Duration.ofSeconds(waitTimeInSeconds))).until(
 				(ExpectedConditions.visibilityOfElementLocated(element))) != null;
 				
+	}
+	
+	/**
+	 * Waits until the given element is not present by trying to find it every 500 milliseconds for a maximum amount of time
+	 * @param waitTimeInSeconds
+	 * @param element
+	 *
+	 */
+	public static boolean waitUntilElementNotPresent(int waitTimeInSeconds, By element) {
+		
+		return (new WebDriverWait(driver, java.time.Duration.ofSeconds(waitTimeInSeconds))).until(
+				(ExpectedConditions.invisibilityOfElementLocated(element))) != null;
+				
+	}
+	
+	/**
+	 * Scrolls page using javascript
+	 * @param x
+	 * @param y
+	 */
+	public static void scrollPageBy(int x, int y) {
+		((JavascriptExecutor) driver)
+	     .executeScript("window.scrollBy("+ x +", "+ y +")");
 	}
 }

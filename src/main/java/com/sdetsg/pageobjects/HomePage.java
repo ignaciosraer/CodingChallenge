@@ -13,7 +13,10 @@ public class HomePage extends ProjectSettings {
 	String searchInput = "//input[@id='search-key']";
 	String searchButton = "//input[@class='search-button']";
 
-
+	/**
+	 * Maximizes the browser and navigates to the given URL
+	 * @param url
+	 */
 	public HomePage goToHomePage(String url) {
 
 		driver.manage().window().maximize();
@@ -22,6 +25,9 @@ public class HomePage extends ProjectSettings {
 		return new HomePage();
 	}
 
+	/**
+	 * Closes the promo popup if present
+	 */
 	public HomePage closePromoPopUpIfPresent() {
 
 		/**
@@ -29,7 +35,7 @@ public class HomePage extends ProjectSettings {
 		 * but given it is a test I decided to show it is possible if I wanted to click something behind it
 		 */
 		try {
-			if (Utils.waitUntilElementPresent(20, By.xpath(promoIframe))) {
+			if (Utils.waitUntilElementPresent(10, By.xpath(promoIframe))) {
 
 				driver.switchTo().frame(driver.findElement(By.xpath(promoIframe)));
 				Utils.waitUntilElementPresent(20, By.xpath(popUpCloseButton));
@@ -43,7 +49,11 @@ public class HomePage extends ProjectSettings {
 
 		return new HomePage();
 	}
-
+	
+	/**
+	 * Searches for the given product
+	 * @param product
+	 */
 	public SearchResultsPage searchProduct(String product) {
 
 		driver.findElement(By.xpath(searchInput)).sendKeys(product);

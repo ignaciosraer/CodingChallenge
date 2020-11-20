@@ -13,7 +13,9 @@ public class SingleProductPage extends ProjectSettings {
 	String popUpCloseButton = "//img[@class='rax-image ' and contains(@src, 'TB1a')]";
 	String productQuantity = "//div[@class='product-quantity-tip']//span";
 	
-	
+	/**
+	 * Verifies the quantity of products available for purchase
+	 */
 	public void verifyProductQuantity() {
 		
 		Utils.switchTabs(1);
@@ -23,7 +25,7 @@ public class SingleProductPage extends ProjectSettings {
 		 * but given it is a test I decided to show it is possible if I wanted to click something behind it
 		 */
 		try {
-			if (Utils.waitUntilElementPresent(20, By.xpath(promoIframe))) {
+			if (Utils.waitUntilElementPresent(10, By.xpath(promoIframe))) {
 
 				driver.switchTo().frame(driver.findElement(By.xpath(promoIframe)));
 				Utils.waitUntilElementPresent(20, By.xpath(popUpCloseButton));
@@ -35,12 +37,12 @@ public class SingleProductPage extends ProjectSettings {
 			System.out.println("Promo popup was not present at single product page");
 		}
 		
-		Utils.waitUntilElementPresent(20, By.xpath(productQuantity));
+		Utils.waitUntilElementPresent(10, By.xpath(productQuantity));
+		
 		
 		String quantity = driver.findElement(By.xpath(productQuantity)).getText();
-		String[] parts = quantity.split(" ");
-		
-		Assert.assertTrue(Integer.parseInt(parts[0]) >= 1);
-		
+		int value = Integer.parseInt(quantity.replaceAll("[^0-9]", ""));
+
+		Assert.assertTrue(value >= 1);
 	}
 }
