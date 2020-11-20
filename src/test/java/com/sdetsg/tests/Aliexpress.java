@@ -1,6 +1,6 @@
 package com.sdetsg.tests;
-import org.testng.annotations.Test;
 
+import org.testng.annotations.Test;
 import com.sdetsg.config.TestSettings;
 import com.sdetsg.pageobjects.HomePage;
 
@@ -15,7 +15,7 @@ public class Aliexpress extends TestSettings {
 
 		HomePage home = new HomePage();
 		
-		home.goToHomePage(url).searchProduct(product).switchPage().accessProduct().verifyProductQuantity();
+		home.goToHomePage(url).closePromoPopUpIfPresent().searchProduct(product).switchPage().accessProduct().verifyProductQuantity();
 	}
 
 	

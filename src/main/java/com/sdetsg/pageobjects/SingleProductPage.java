@@ -1,32 +1,41 @@
 package com.sdetsg.pageobjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.testng.Assert;
-
 import com.sdetsg.config.ProjectSettings;
 import com.sdetsg.utility.Utils;
 
 public class SingleProductPage extends ProjectSettings {
 
-	String popUpCloseButton = "//img[@class='rax-image ' and @data-spm-anchor-id]";
+	//Locators
+	String promoIframe = "//iframe[contains(@src, 'campaign.aliexpress.com')]";
+	String popUpCloseButton = "//img[@class='rax-image ' and contains(@src, 'TB1a')]";
 	String productQuantity = "//div[@class='product-quantity-tip']//span";
 	
 	
 	public void verifyProductQuantity() {
 		
-		//TODO: figure out a way to close the popup
-		//if(driver.findElement(By.xpath(popUpCloseButton)).isDisplayed()) {
-			//driver.findElement(By.xpath(popUpCloseButton)).click();
-		//}
-		
-		//TODO: replace thread sleep with a proper wait
+		Utils.switchTabs(1);
+			
+		/**
+		 * There's no need to close this popup here since I can get the quantity data without closing it
+		 * but given it is a test I decided to show it is possible if I wanted to click something behind it
+		 */
 		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+			if (Utils.waitUntilElementPresent(20, By.xpath(promoIframe))) {
+
+				driver.switchTo().frame(driver.findElement(By.xpath(promoIframe)));
+				Utils.waitUntilElementPresent(20, By.xpath(popUpCloseButton));
+				driver.findElement(By.xpath(popUpCloseButton)).click();
+				driver.switchTo().defaultContent();
+			}
+		} catch (TimeoutException e) {
+
+			System.out.println("Promo popup was not present at single product page");
 		}
 		
-		Utils.switchTabs(1);
+		Utils.waitUntilElementPresent(20, By.xpath(productQuantity));
 		
 		String quantity = driver.findElement(By.xpath(productQuantity)).getText();
 		String[] parts = quantity.split(" ");

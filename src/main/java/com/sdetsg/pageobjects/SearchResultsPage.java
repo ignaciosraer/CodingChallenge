@@ -1,8 +1,10 @@
 package com.sdetsg.pageobjects;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-
+import org.openqa.selenium.TimeoutException;
 import com.sdetsg.config.ProjectSettings;
+import com.sdetsg.utility.Utils;
 
 public class SearchResultsPage extends ProjectSettings {
 
@@ -16,27 +18,28 @@ public class SearchResultsPage extends ProjectSettings {
 	
 	public SearchResultsPage switchPage() {
 		
-		if(driver.findElement(By.xpath(popUpCloseButton)).isDisplayed()) {
-			driver.findElement(By.xpath(popUpCloseButton)).click();
+		try {
+			if (Utils.waitUntilElementPresent(20, By.xpath(popUpCloseButton))) {
+
+				driver.findElement(By.xpath(popUpCloseButton)).click();
+			}
+		} catch (TimeoutException e) {
+
+			System.out.println("Promo popup was not present at search results page");
 		}
 		
 		//TODO: revise this in order to improve stability
 		((JavascriptExecutor) driver)
 	     .executeScript("window.scrollBy(0, document.body.scrollHeight-2000)");
 		
-		//TODO: replace thread sleep with a proper wait
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
+		Utils.waitUntilElementPresent(20, By.xpath(pageSelector));
 		driver.findElement(By.xpath(pageSelector)).click();
 				
 		return new SearchResultsPage();
 	}
 	
 	public SingleProductPage accessProduct() {
+		
 		
 		//TODO: replace thread sleep with a proper wait
 		try {
