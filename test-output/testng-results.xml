@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="28160" started-at="2020-11-20T14:25:33Z" finished-at="2020-11-20T14:26:01Z">
+  <suite name="Default suite" duration-ms="26403" started-at="2020-11-20T14:53:06Z" finished-at="2020-11-20T14:53:32Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="28160" started-at="2020-11-20T14:25:33Z" finished-at="2020-11-20T14:26:01Z">
-      <class name="com.sdetsg.tests.Aliexpress">
-        <test-method status="PASS" signature="ValidateQuantity()[pri:0, instance:com.sdetsg.tests.Aliexpress@512baff6]" name="ValidateQuantity" duration-ms="27363" started-at="2020-11-20T14:25:33Z" finished-at="2020-11-20T14:26:00Z">
+    <test name="Default test" duration-ms="26403" started-at="2020-11-20T14:53:06Z" finished-at="2020-11-20T14:53:32Z">
+      <class name="com.sdetsg.tests.QuantityOfProducts">
+        <test-method status="PASS" signature="ValidateQuantity()[pri:0, instance:com.sdetsg.tests.QuantityOfProducts@512baff6]" name="ValidateQuantity" duration-ms="25605" started-at="2020-11-20T14:53:06Z" finished-at="2020-11-20T14:53:32Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- ValidateQuantity -->
-        <test-method status="PASS" signature="endReport()[pri:0, instance:com.sdetsg.tests.Aliexpress@512baff6]" name="endReport" is-config="true" duration-ms="777" started-at="2020-11-20T14:26:00Z" finished-at="2020-11-20T14:26:01Z">
+        <test-method status="PASS" signature="endReport()[pri:0, instance:com.sdetsg.tests.QuantityOfProducts@512baff6]" name="endReport" is-config="true" duration-ms="778" started-at="2020-11-20T14:53:32Z" finished-at="2020-11-20T14:53:32Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- endReport -->
-      </class> <!-- com.sdetsg.tests.Aliexpress -->
+      </class> <!-- com.sdetsg.tests.QuantityOfProducts -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -9,9 +9,9 @@ import com.sdetsg.utility.Utils;
 public class SingleProductPage extends ProjectSettings {
 
 	//Locators
-	String promoIframe = "//iframe[contains(@src, 'campaign.aliexpress.com')]";
-	String popUpCloseButton = "//img[@class='rax-image ' and contains(@src, 'TB1a')]";
-	String productQuantity = "//div[@class='product-quantity-tip']//span";
+	By promoIframe = By.xpath("//iframe[contains(@src, 'campaign.aliexpress.com')]");
+	By popUpCloseButton = By.xpath("//img[@class='rax-image ' and contains(@src, 'TB1a')]");
+	By productQuantity = By.xpath("//div[@class='product-quantity-tip']//span");
 	
 	/**
 	 * Verifies the quantity of products available for purchase
@@ -25,11 +25,11 @@ public class SingleProductPage extends ProjectSettings {
 		 * but given it is a test I decided to show it is possible if I wanted to click something behind it
 		 */
 		try {
-			if (Utils.waitUntilElementPresent(10, By.xpath(promoIframe))) {
+			if (Utils.waitUntilElementPresent(10, promoIframe)) {
 
-				driver.switchTo().frame(driver.findElement(By.xpath(promoIframe)));
-				Utils.waitUntilElementPresent(20, By.xpath(popUpCloseButton));
-				driver.findElement(By.xpath(popUpCloseButton)).click();
+				driver.switchTo().frame(driver.findElement(promoIframe));
+				Utils.waitUntilElementPresent(20, popUpCloseButton);
+				driver.findElement(popUpCloseButton).click();
 				driver.switchTo().defaultContent();
 			}
 		} catch (TimeoutException e) {
@@ -37,10 +37,10 @@ public class SingleProductPage extends ProjectSettings {
 			System.out.println("Promo popup was not present at single product page");
 		}
 		
-		Utils.waitUntilElementPresent(10, By.xpath(productQuantity));
+		Utils.waitUntilElementPresent(10, productQuantity);
 		
 		
-		String quantity = driver.findElement(By.xpath(productQuantity)).getText();
+		String quantity = driver.findElement(productQuantity).getText();
 		int value = Integer.parseInt(quantity.replaceAll("[^0-9]", ""));
 
 		Assert.assertTrue(value >= 1);

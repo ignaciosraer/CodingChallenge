@@ -8,10 +8,10 @@ import com.sdetsg.utility.Utils;
 public class HomePage extends ProjectSettings {
 
 	// Locators
-	String promoIframe = "//iframe[contains(@src, 'campaign.aliexpress.com')]";
-	String popUpCloseButton = "//img[@class='rax-image ' and contains(@src, 'TB1a')]";
-	String searchInput = "//input[@id='search-key']";
-	String searchButton = "//input[@class='search-button']";
+	By promoIframe = By.xpath("//iframe[contains(@src, 'campaign.aliexpress.com')]");
+	By popUpCloseButton = By.xpath("//img[@class='rax-image ' and contains(@src, 'TB1a')]");
+	By searchInput = By.xpath("//input[@id='search-key']");
+	By searchButton = By.xpath("//input[@class='search-button']");
 
 	/**
 	 * Maximizes the browser and navigates to the given URL
@@ -35,11 +35,11 @@ public class HomePage extends ProjectSettings {
 		 * but given it is a test I decided to show it is possible if I wanted to click something behind it
 		 */
 		try {
-			if (Utils.waitUntilElementPresent(10, By.xpath(promoIframe))) {
+			if (Utils.waitUntilElementPresent(10, promoIframe)) {
 
-				driver.switchTo().frame(driver.findElement(By.xpath(promoIframe)));
-				Utils.waitUntilElementPresent(20, By.xpath(popUpCloseButton));
-				driver.findElement(By.xpath(popUpCloseButton)).click();
+				driver.switchTo().frame(driver.findElement(promoIframe));
+				Utils.waitUntilElementPresent(20, popUpCloseButton);
+				driver.findElement(popUpCloseButton).click();
 				driver.switchTo().defaultContent();
 			}
 		} catch (TimeoutException e) {
@@ -56,8 +56,8 @@ public class HomePage extends ProjectSettings {
 	 */
 	public SearchResultsPage searchProduct(String product) {
 
-		driver.findElement(By.xpath(searchInput)).sendKeys(product);
-		driver.findElement(By.xpath(searchButton)).click();
+		driver.findElement(searchInput).sendKeys(product);
+		driver.findElement(searchButton).click();
 
 		/**
 		 * An alternative here could be to use enter right after entering the product to
